@@ -1,0 +1,67 @@
+.header{
+  height: 100px;
+  background-color:#024BB9;
+
+}
+.icono-menu{
+
+  color: white;
+  font-size: 40px;
+  text-decoration: none;
+
+}
+.columna_btn_menu{
+  text-align: right;
+  padding-right: 30px;
+}
+
+.contenedor-encabezado{
+  position:absolute;
+  z-index:1;
+  right:0%;
+  top: 70px;
+  background: #212121;
+  color: white;
+  border-radius: 5px;
+  width: 250px;
+  margin-right: 2px;
+  height: 350px;
+
+
+}
+
+.cuerpo-container a {
+  border: none;
+  text-decoration: none;
+  display: table;
+  width: 240px;
+  height: 20px;
+  padding: 5px;
+  position: relative;
+  left: 5px;
+  margin-bottom: 5px;
+  transition: 1s ease all;
+  cursor:pointer;
+
+
+}
+
+.cuerpo-container a:hover{
+  border-radius: 4px;
+  background-color: rgb(131, 127, 127);
+}
+
+.cerrar-sesion{
+  text-align: center;
+  text-decoration: none;
+  background: black;
+  color: white;
+}
+.contenedor-logo{
+  text-align: center;
+}
+
+.icono-usuario-general{
+  text-align: center;
+  font-size: 60px;
+}

@@ -1,0 +1,28 @@
+<nav class="navbar header navbar-expand-lg">
+  <div class="col-11 columna_logo p-2">
+    <img src="../../../assets/images/logo_dev.png" class="img-fluid" alt="image desc">
+  </div>
+  <div class="col-1 columna_btn_menu">
+      <span
+       [class]="tipo_icono?'bi bi-x icono-menu':'bi bi-list icono-menu'"
+       (click)=" mostrarMenuOpciones()"></span>
+
+  </div>
+</nav>
+<!-- MODAL MENU -->
+<div class="contenedor-encabezado" [style]="estado">
+  <div class="cuerpo-container">
+    <div class="contenedor-logo">
+      <span class="bi bi-person-circle icono-usuario-general"></span>
+      <span>miempresa@correo.es.com</span>
+    </div>
+    <hr>
+      <a> <span class="bi bi-building-fill-check mx-2"></span>Empresa</a>
+      <a> <span class="bi bi-box2-fill mx-2"></span>Arqueo de caja</a>
+      <a> <span class="bi bi-filetype-pdf mx-2"></span>Informes</a>
+    <hr>
+    <a class="cerrar-sesion"> <span class="bi bi-x-circle mx-2"></span>Cerrar sesion</a>
+  </div>
+</div>
+<!--  FIN DE MODAL  -->
+
