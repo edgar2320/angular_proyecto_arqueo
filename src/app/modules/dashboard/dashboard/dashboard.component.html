@@ -1,0 +1,47 @@
+<div class="container">
+  <app-barra-dashboard [titulo]="msj_titulo"></app-barra-dashboard>
+ <div class="row ">
+    <div class="col-xl-4 col-lg-4 col-sm-12- col-md-12 col-12">
+      <div class="card card-stilo" style="width: 350px">
+        <img [src]="empresa" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Registrar empresa</h5>
+          <p class="card-text">
+            Debe de registrar los datos básicos de su empresa, negocio, emprendimiento,
+            para poder hacer uso de las opciones de la aplicación.
+          </p>
+          <a href="#" class="btn btn-primary" routerLink="/empresa/registrar">Navegar
+            <i class="bi bi-chevron-right icono-navegar"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-sm-12- col-md-12 col-12">
+      <div class="card card-stilo" style="width: 350px">
+        <img [src]="caja" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Arqueo de caja</h5>
+          <p class="card-text">
+            Opción donde puede realizar el cierre de cajas
+            al final del día y guardar la información.
+          </p>
+          <a href="#" class="btn btn-primary" routerLink="/arqueo/registrar">Navegar
+            <i class="bi bi-chevron-right icono-navegar"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-sm-12- col-md-12 col-12">
+      <div class="card card-stilo" style="width: 350px">
+        <img [src]="informe" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Informes</h5>
+          <p class="card-text">
+            Información en formato PDF de consulta de
+            los cierres de cajas realizados durante el tiempo.
+          </p>
+          <a href="#" class="btn btn-primary" routerLink="/informe/informes">Navegar
+            <i class="bi bi-chevron-right icono-navegar"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
