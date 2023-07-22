@@ -1,1 +1,158 @@
-<p>formulario-registrar works!</p>
+<div class="container">
+  <app-barra-dashboard [titulo]="msj_titulo"></app-barra-dashboard>
+  <span class="titulo-formulario">
+    <i class="bi bi-box2-fill icono-formulario"></i>
+    Arqueo de caja (los campos estan por defecto sustituya lo que considere )
+  </span>
+  <div class="contenido-formulario">
+    <div class="row p-3 my-3">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="col-12 py-2">
+          <label for="caja">Nombre de caja</label>
+          <input
+            type="text"
+            id="caja"
+            placeholder="Caja1"
+            class="form-control"
+          />
+        </div>
+        <div class="col-12 py-2">
+          <label for="hora_apertura">Hora de apertura</label>
+          <input
+            type="time"
+            id="hora_apertura"
+            placeholder="00:00"
+            class="form-control"
+          />
+        </div>
+        <div class="col-12 py-2">
+          <label for="hora_cierre">Hora de cierre</label>
+          <input
+            type="time"
+            id="hora_cierre"
+            placeholder="00:00"
+            class="form-control"
+          />
+        </div>
+        <div class="col-12 py-2">
+          <label for="fecha">Fecha de arqueo</label>
+          <input
+            type="date"
+            id="fecha"
+            placeholder="mm/dd/YYYY"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <!--  -->
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="col-12 py-2">
+          <label for="cajero">Nombre de cajero al final del dia</label>
+          <input
+            type="text"
+            id="cajero"
+            placeholder="Cajero"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-12 py-2">
+          <button type="button" class="btn btn-danger my-4" data-bs-toggle="modal"
+          data-bs-target="#modal_realizar_arqueo">
+            <i class="bi bi-cash-coin "></i>  Realizar Conteo
+          </button>
+        </div>
+        <!--  -->
+        <div class="col-12 py-2 contenedor-recuento">
+          <div class="row p-2">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <label for="">Total dolares ($):</label>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <span class="text-dark fs-4">0.0</span>
+            </div>
+          </div>
+          <!--  -->
+          <div class="row p-2">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <label for="">Total monedas ($): </label>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <span class="text-dark fs-4">0.0</span>
+            </div>
+          </div>
+          <!--  -->
+          <div class="row p-2">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <label for="">Total en caja ($): </label>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <span class="text-dark fs-4">0.0</span>
+            </div>
+          </div>
+          <!--  -->
+          <div class="row p-2">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <label for="">Monto fisico ( es opcional)</label>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <input type="number" id="fisico" class="form-control" />
+            </div>
+          </div>
+          <!--  -->
+          <div class="row p-2">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <label for="">Total Faltante ($): </label>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <span class="text-dark fs-4">0.0</span>
+            </div>
+          </div>
+          <!--  -->
+          <div class="row p-2">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <label for="">Total sobrante ($): </label>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <span class="text-dark fs-4">0.0</span>
+            </div>
+          </div>
+          <!--  -->
+        </div>
+        <div class="col-12 py-2">
+          <button type="button" class="btn btn-primary my-4">
+            <i class="bi bi-folder-plus mx-2 fs-5"></i>
+            Registrar arqueo</button>
+        </div>
+        <!--  -->
+      </div>
+      <!-- fin columna 2  -->
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="modal_realizar_arqueo" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Body
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Optional: Place to the bottom of scripts -->
+<script>
+  const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
+
+</script>

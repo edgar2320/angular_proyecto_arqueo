@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./formulario-registrar.component.css']
 })
 export class FormularioRegistrarComponent implements OnInit {
-
+   msj_titulo:string='Regresar menú principal';
   constructor() { }
 
   ngOnInit(): void {
