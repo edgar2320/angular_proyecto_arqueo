@@ -4,26 +4,98 @@
     <i class="bi bi-building-fill icono-formulario" ></i>
     Control de empresa</h1>
 
-    <div class="contenido-formulario">
+    <form (submit)="saveEmpresa()" [formGroup]="formulario_empresa">
+      <div class="contenido-formulario">
 
-      <div class="row p-2 my-4">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" placeholder="Digite el nombre de la empresa" class="form-control">
+        <div class="row p-2 my-4">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
+            <label for="nombre">Nombre</label>
+            <input
+            autocomplete="new-text"
+            formControlName="nombre"
+            [class]="campoValido('nombre')"
+            type="text"
+            id="nombre"
+            placeholder="Digite el nombre de la empresa"
+            class="form-control">
+            <!-- ESPCIO DE VALIDACION -->
+            <div class="invalid-feedback">
+              <span class="d-block" *ngIf="nombre?.errors?.['required'];">
+                Nombre es requerido
+              </span>
+              <span class="d-block" *ngIf="nombre?.errors?.['minlength'];">
+                Tamanio minimo es de 5
+              </span>
+              <span class="d-block" *ngIf="nombre?.errors?.['maxlength'];">
+                Tamanio maximo es de 100
+              </span>
+            </div>
+            <!--  -->
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
+            <label for="correo">Correo</label>
+            <input
+            autocomplete="new-text"
+            formControlName="correo"
+            [class]="campoValido('correo')"
+            type="text"
+            id="correo"
+            placeholder="Digite el correo de la empresa"
+            class="form-control">
+             <!-- ESPCIO DE VALIDACION -->
+             <div class="invalid-feedback">
+              <span class="d-block" *ngIf="correo?.errors?.['required'];">
+                Correo es requerido
+              </span>
+              <span class="d-block" *ngIf="correo?.errors?.['minlength'];">
+                Tamanio minimo es de 10
+              </span>
+              <span class="d-block" *ngIf="correo?.errors?.['maxlength'];">
+                Tamanio maximo es de 100
+              </span>
+              <span class="d-block" *ngIf="correo?.errors?.['pattern'];">
+                Introduzca un formato valido
+              </span>
+            </div>
+            <!--  -->
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
+            <label for="telefono">Teléfono</label>
+            <input
+            autocomplete="new-text"
+            formControlName="telefono"
+            type="text"
+            id="telefono"
+            placeholder="(503) 8900-2345"
+            class="form-control"
+            [class]="campoValido('telefono')"
+            >
+             <!-- ESPCIO DE VALIDACION -->
+             <div class="invalid-feedback">
+              <span class="d-block" *ngIf="telefono?.errors?.['required'];">
+                Telefono es requerido
+              </span>
+              <span class="d-block" *ngIf="telefono?.errors?.['minlength'];">
+                Tamanio minimo es de 9
+              </span>
+              <span class="d-block" *ngIf="telefono?.errors?.['maxlength'];">
+                Tamanio maximo es de 9
+              </span>
+              <span class="d-block" *ngIf="telefono?.errors?.['pattern'];">
+                Formato: ####-####
+              </span>
+            </div>
+            <!--  -->
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
+            <button type="submit" class="btn btn-primary my-4">
+              <i class="bi bi-folder-plus mx-2 fs-5"></i>
+              {{accion}}
+            </button>
+          </div>
         </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
-          <label for="correo">Correo</label>
-          <input type="text" id="correo" placeholder="Digite el correo de la empresa" class="form-control">
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
-          <label for="telefono">Teléfono</label>
-          <input type="text" id="telefono" placeholder="(503) 8900-2345" class="form-control">
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-3">
-          <button type="button" class="btn btn-primary my-4"><i class="bi bi-folder-plus mx-2 fs-5"></i>Registrar Empresa</button>
-        </div>
+
       </div>
-
-    </div>
+    </form>
 
 </div>

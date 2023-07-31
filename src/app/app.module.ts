@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
+import { PathLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -17,7 +18,12 @@ import { SkeletonComponent } from './layout/skeleton/skeleton.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+   {
+    provide: PathLocationStrategy,
+    useClass: PathLocationStrategy
+   }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
