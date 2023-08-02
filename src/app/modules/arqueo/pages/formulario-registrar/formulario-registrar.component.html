@@ -1,5 +1,17 @@
 <div class="container">
-  <app-barra-dashboard [titulo]="msj_titulo"></app-barra-dashboard>
+  <form [formGroup]="formulario_arqueo" (submit)="registrar()">
+  <!--  -->
+  <div class="row">
+    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+      <app-barra-dashboard [titulo]="msj_titulo"></app-barra-dashboard>
+    </div>
+    <div class="col-xl-2 col-lg-2 col-md-10 col-sm-12 col-12">
+      <button type="button" class="btn btn-primary my-3">
+        Ver registros <span class="badge bg-secondary">4</span>
+      </button>
+    </div>
+  </div>
+  <!--  -->
   <span class="titulo-formulario">
     <i class="bi bi-box2-fill icono-formulario"></i>
     Arqueo de caja (los campos estan por defecto sustituya lo que considere )
@@ -10,38 +22,76 @@
         <div class="col-12 py-2">
           <label for="caja">Nombre de caja</label>
           <input
+           [class]="campoValido('caja')"
+           formControlName="caja"
             type="text"
             id="caja"
             placeholder="Caja1"
+            [value]="caja?.value"
             class="form-control"
           />
+          <!--  -->
+           <div class="invalid-feedback">
+            <span class="d-block"
+             *ngIf="caja?.errors?.['required']">El campo es requerido</span>
+           </div>
+          <!--  -->
         </div>
         <div class="col-12 py-2">
           <label for="hora_apertura">Hora de apertura</label>
           <input
+           [class]="campoValido('')"
+           formControlName="hora_apertura"
             type="time"
             id="hora_apertura"
             placeholder="00:00"
+            [value]="hora_apertura?.value"
             class="form-control"
           />
+          <!--  -->
+          <div class="invalid-feedback">
+            <span class="d-block"
+             *ngIf="hora_apertura?.errors?.['required']">El campo es requerido</span>
+           </div>
+          <!--  -->
         </div>
         <div class="col-12 py-2">
           <label for="hora_cierre">Hora de cierre</label>
           <input
+           [class]="campoValido('')"
+           formControlName="hora_cierre"
             type="time"
             id="hora_cierre"
             placeholder="00:00"
+            [value]="hora_cierre?.value"
+            [min]="fecha_actual | date:'HH:mm'"
             class="form-control"
           />
+          <!--  -->
+          <div class="invalid-feedback">
+            <span class="d-block"
+             *ngIf="hora_cierre?.errors?.['required']">El campo es requerido</span>
+           </div>
+          <!--  -->
         </div>
         <div class="col-12 py-2">
           <label for="fecha">Fecha de arqueo</label>
           <input
+           [class]="campoValido('fecha')"
+           formControlName="fecha"
             type="date"
             id="fecha"
+            [max]="fecha?.value | date:'YYYY-MM-dd'"
             placeholder="mm/dd/YYYY"
+            [value]="fecha?.value"
             class="form-control"
           />
+          <!--  -->
+          <div class="invalid-feedback">
+            <span class="d-block"
+             *ngIf="fecha?.errors?.['required']">El campo es requerido</span>
+           </div>
+          <!--  -->
         </div>
       </div>
       <!--  -->
@@ -49,17 +99,32 @@
         <div class="col-12 py-2">
           <label for="cajero">Nombre de cajero al final del dia</label>
           <input
+           [class]="campoValido('cajero')"
+           formControlName="cajero"
             type="text"
             id="cajero"
             placeholder="Cajero"
+            value="SISTEMA"
             class="form-control"
           />
+          <!--  -->
+          <div class="invalid-feedback">
+            <span class="d-block"
+             *ngIf="cajero?.errors?.['required']">El campo es requerido</span>
+            <span class="d-block"
+             *ngIf="cajero?.errors?.['pattern']">Ingresem un nombre valido</span>
+           </div>
+          <!--  -->
         </div>
 
         <div class="col-12 py-2">
-          <button type="button" class="btn btn-danger my-4" data-bs-toggle="modal"
-          data-bs-target="#modal_realizar_arqueo">
-            <i class="bi bi-cash-coin "></i>  Realizar Conteo
+          <button
+            type="button"
+            class="btn btn-danger my-4"
+            data-bs-toggle="modal"
+            data-bs-target="#modal_realizar_arqueo"
+          >
+            <i class="bi bi-cash-coin"></i> Realizar Conteo
           </button>
         </div>
         <!--  -->
@@ -93,10 +158,10 @@
           <!--  -->
           <div class="row p-2">
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <label for="">Monto fisico ( es opcional)</label>
+              <label for="">Monto fisico</label>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <input type="number" id="fisico" class="form-control" />
+              <span class="text-dark fs-4">0.0</span>
             </div>
           </div>
           <!--  -->
@@ -120,39 +185,262 @@
           <!--  -->
         </div>
         <div class="col-12 py-2">
-          <button type="button" class="btn btn-primary my-4">
+          <button type="submit" class="btn btn-primary my-4">
             <i class="bi bi-folder-plus mx-2 fs-5"></i>
-            Registrar arqueo</button>
+            Registrar arqueo
+          </button>
         </div>
         <!--  -->
       </div>
       <!-- fin columna 2  -->
     </div>
   </div>
+</form>
 </div>
 
 <!-- MODAL -->
-<div class="modal fade" id="modal_realizar_arqueo" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+<div
+  class="modal fade"
+  id="modal_realizar_arqueo"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+    role="document"
+  >
+
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalTitleId">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="modalTitleId">Arqueo de caja</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
+      <form style="overflow-y: auto;">
       <div class="modal-body">
-        Body
+
+          <div class="row">
+            <!-- DOLARES -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <div class="titulo_conteo p-2 mx-0">
+                <span>Dolares ($):</span>
+              </div>
+              <!-- CONTENIDO 1 -->
+              <div class="row my-1">
+                <div class="col-5">
+                  <label class="form-label mx-2 py-2">Billetes de 1:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!--  -->
+              <!-- CONTENIDO 2 -->
+              <div class="row my-1">
+                <div class="col-5">
+                  <label class="form-label mx-2 py-2">Billetes de 5:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!--  -->
+              <!-- CONTENIDO 3 -->
+              <div class="row my-1">
+                <div class="col-5">
+                  <label class="form-label mx-2 py-2">Billetes de 10:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!-- CONTENIDO 4 -->
+              <div class="row my-1">
+                <div class="col-5">
+                  <label class="form-label mx-2 py-2">Billetes de 20:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!-- CONTENIDO 5 -->
+              <div class="row my-1">
+                <div class="col-5">
+                  <label class="form-label mx-2 py-2">Billetes de 50:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!-- CONTENIDO 6 -->
+              <div class="row my-1">
+                <div class="col-5">
+                  <label class="form-label mx-2 py-2">Billetes de 100:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- MONEDAS -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+              <div class="titulo_conteo p-2 mx-0">
+                <span>Monedas ($):</span>
+              </div>
+              <!-- CONTENIDO 1 -->
+              <div class="row my-1">
+                <div class="col-6">
+                  <label class="form-label mx-2 py-2">Monedas de 0,01:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!--  -->
+              <!-- CONTENIDO 2 -->
+              <div class="row my-1">
+                <div class="col-6">
+                  <label class="form-label mx-2 py-2">Monedas de 0,05:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!--  -->
+              <!-- CONTENIDO 3 -->
+              <div class="row my-1">
+                <div class="col-6">
+                  <label class="form-label mx-2 py-2">Monedas de 0,10:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!-- CONTENIDO 4 -->
+              <div class="row my-1">
+                <div class="col-6">
+                  <label class="form-label mx-2 py-2">Monedas de 0,25:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!-- CONTENIDO 5 -->
+              <div class="row my-1">
+                <div class="col-6">
+                  <label class="form-label mx-2 py-2">Monedas de 1,00:</label>
+                </div>
+                <div class="col-4">
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <!--  -->
+            </div>
+          </div>
+          <!-- FIN DE ROW DOLARES Y MONEDAS -->
+          <div class="row mx-1">
+            <div class="titulo_conteo p-2 mx-0">
+              <span>Detalle</span>
+            </div>
+          </div>
+          <!--  -->
+          <div class="row py-2">
+            <div class="col-3">
+              <label class="form-label mx-2 ">Total dinero($):</label>
+            </div>
+            <div class="col-3">
+              <span>0,0</span>
+            </div>
+          </div>
+          <!--  -->
+           <div class="row py-2">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                  <label class="form-label mx-2 ">Monto fisico(Opcional)</label>
+                  <br>
+                  <input
+                    type="number"
+                    class="form-control input"
+                    placeholder="0"
+                  />
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+               <label class="form-label mx-2 ">Sobrante($)</label>
+                  <br>
+                  <span class="mx-2">0,0</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+               <label class="form-label mx-2 ">Faltante($)</label>
+                  <br>
+                  <span class="mx-2">0,0</span>
+            </div>
+           </div>
+          <!--  -->
+          <!-- FIN DE ROW DETALLE -->
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary">Terminar Arqueo</button>
       </div>
+    </form>
+     <!-- FIN DE FORM -->
     </div>
+
+
   </div>
 </div>
-
-
-<!-- Optional: Place to the bottom of scripts -->
-<script>
-  const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-
-</script>

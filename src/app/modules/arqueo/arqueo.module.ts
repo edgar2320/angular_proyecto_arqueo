@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ArqueoRoutingModule } from './arqueo-routing.module';
 import { FormularioRegistrarComponent } from './pages/formulario-registrar/formulario-registrar.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DashboardModule } from '../dashboard/dashboard.module';
   imports: [
     CommonModule,
     ArqueoRoutingModule,
-    DashboardModule
+    DashboardModule,
+    ReactiveFormsModule
   ]
 })
 export class ArqueoModule { }

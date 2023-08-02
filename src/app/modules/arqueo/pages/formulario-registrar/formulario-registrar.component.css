@@ -18,3 +18,13 @@
   .contenedor-recuento{
     background-color: white;
   }
+
+  .titulo_conteo{
+    background: #F2F0F0;
+  }
+
+  .input{
+    height: 40px;
+    max-width: 100px;
+    float: left;
+  }
