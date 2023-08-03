@@ -1,201 +1,213 @@
 <div class="container">
   <form [formGroup]="formulario_arqueo" (submit)="registrar()">
-  <!--  -->
-  <div class="row">
-    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
-      <app-barra-dashboard [titulo]="msj_titulo"></app-barra-dashboard>
-    </div>
-    <div class="col-xl-2 col-lg-2 col-md-10 col-sm-12 col-12">
-      <button type="button" class="btn btn-primary my-3">
-        Ver registros <span class="badge bg-secondary">4</span>
-      </button>
-    </div>
-  </div>
-  <!--  -->
-  <span class="titulo-formulario">
-    <i class="bi bi-box2-fill icono-formulario"></i>
-    Arqueo de caja (los campos estan por defecto sustituya lo que considere )
-  </span>
-  <div class="contenido-formulario">
-    <div class="row p-3 my-3">
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="col-12 py-2">
-          <label for="caja">Nombre de caja</label>
-          <input
-           [class]="campoValido('caja')"
-           formControlName="caja"
-            type="text"
-            id="caja"
-            placeholder="Caja1"
-            [value]="caja?.value"
-            class="form-control"
-          />
-          <!--  -->
-           <div class="invalid-feedback">
-            <span class="d-block"
-             *ngIf="caja?.errors?.['required']">El campo es requerido</span>
-           </div>
-          <!--  -->
-        </div>
-        <div class="col-12 py-2">
-          <label for="hora_apertura">Hora de apertura</label>
-          <input
-           [class]="campoValido('')"
-           formControlName="hora_apertura"
-            type="time"
-            id="hora_apertura"
-            placeholder="00:00"
-            [value]="hora_apertura?.value"
-            class="form-control"
-          />
-          <!--  -->
-          <div class="invalid-feedback">
-            <span class="d-block"
-             *ngIf="hora_apertura?.errors?.['required']">El campo es requerido</span>
-           </div>
-          <!--  -->
-        </div>
-        <div class="col-12 py-2">
-          <label for="hora_cierre">Hora de cierre</label>
-          <input
-           [class]="campoValido('')"
-           formControlName="hora_cierre"
-            type="time"
-            id="hora_cierre"
-            placeholder="00:00"
-            [value]="hora_cierre?.value"
-            [min]="fecha_actual | date:'HH:mm'"
-            class="form-control"
-          />
-          <!--  -->
-          <div class="invalid-feedback">
-            <span class="d-block"
-             *ngIf="hora_cierre?.errors?.['required']">El campo es requerido</span>
-           </div>
-          <!--  -->
-        </div>
-        <div class="col-12 py-2">
-          <label for="fecha">Fecha de arqueo</label>
-          <input
-           [class]="campoValido('fecha')"
-           formControlName="fecha"
-            type="date"
-            id="fecha"
-            [max]="fecha?.value | date:'YYYY-MM-dd'"
-            placeholder="mm/dd/YYYY"
-            [value]="fecha?.value"
-            class="form-control"
-          />
-          <!--  -->
-          <div class="invalid-feedback">
-            <span class="d-block"
-             *ngIf="fecha?.errors?.['required']">El campo es requerido</span>
-           </div>
-          <!--  -->
-        </div>
+    <!--  -->
+    <div class="row">
+      <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <app-barra-dashboard [titulo]="msj_titulo"></app-barra-dashboard>
       </div>
-      <!--  -->
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="col-12 py-2">
-          <label for="cajero">Nombre de cajero al final del dia</label>
-          <input
-           [class]="campoValido('cajero')"
-           formControlName="cajero"
-            type="text"
-            id="cajero"
-            placeholder="Cajero"
-            value="SISTEMA"
-            class="form-control"
-          />
-          <!--  -->
-          <div class="invalid-feedback">
-            <span class="d-block"
-             *ngIf="cajero?.errors?.['required']">El campo es requerido</span>
-            <span class="d-block"
-             *ngIf="cajero?.errors?.['pattern']">Ingresem un nombre valido</span>
-           </div>
-          <!--  -->
+      <div class="col-xl-2 col-lg-2 col-md-10 col-sm-12 col-12">
+        <button type="button" class="btn btn-primary my-3">
+          Ver registros <span class="badge bg-secondary">4</span>
+        </button>
+      </div>
+    </div>
+    <!--  -->
+    <span class="titulo-formulario">
+      <i class="bi bi-box2-fill icono-formulario"></i>
+      Arqueo de caja (los campos estan por defecto sustituya lo que considere )
+    </span>
+    <div class="contenido-formulario">
+      <div class="row p-3 my-3">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+          <div class="col-12 py-2">
+            <label for="nombrecaja">Nombre de caja</label>
+            <input
+              [class]="campoValido('nombrecaja')"
+              formControlName="nombrecaja"
+              type="text"
+              id="nombrecaja"
+              placeholder="nombrecaja1"
+              [value]="nombrecaja?.value"
+              class="form-control"
+            />
+            <!--  -->
+            <div class="invalid-feedback">
+              <span class="d-block" *ngIf="nombrecaja?.errors?.['required']"
+                >El campo es requerido</span
+              >
+            </div>
+            <!--  -->
+          </div>
+          <div class="col-12 py-2">
+            <label for="horaapertura">Hora de apertura</label>
+            <input
+              [class]="campoValido('horaapertura')"
+              formControlName="horaapertura"
+              type="time"
+              id="horaapertura"
+              placeholder="00:00"
+              [value]="horaapertura?.value"
+              class="form-control"
+            />
+            <!--  -->
+            <div class="invalid-feedback">
+              <span class="d-block" *ngIf="horaapertura?.errors?.['required']"
+                >El campo es requerido</span
+              >
+            </div>
+            <!--  -->
+          </div>
+          <div class="col-12 py-2">
+            <label for="horacierre">Hora de cierre</label>
+            <input
+              [class]="campoValido('horacierre')"
+              formControlName="horacierre"
+              type="time"
+              id="horacierre"
+              placeholder="00:00"
+              [value]="horacierre?.value"
+              [min]="fecha_actual | date : 'HH:mm'"
+              class="form-control"
+            />
+            <!--  -->
+            <div class="invalid-feedback">
+              <span class="d-block" *ngIf="horacierre?.errors?.['required']">
+                El campo es requerido
+              </span>
+              <span
+                class="d-block"
+                *ngIf="horacierre?.errors?.['validarHoras']"
+              >
+                La fecha de cierre debe de ser mayor a la de apertura
+              </span>
+            </div>
+            <!--  -->
+          </div>
+          <div class="col-12 py-2">
+            <label for="fechaarqueo">Fecha de arqueo</label>
+            <input
+              [class]="campoValido('fechaarqueo')"
+              formControlName="fechaarqueo"
+              type="date"
+              id="fechaarqueo"
+              [max]="fechaarqueo?.value | date : 'YYYY-MM-dd'"
+              placeholder="mm/dd/YYYY"
+              [value]="fechaarqueo?.value"
+              class="form-control"
+            />
+            <!--  -->
+            <div class="invalid-feedback">
+              <span class="d-block" *ngIf="fechaarqueo?.errors?.['required']"
+                >El campo es requerido</span
+              >
+            </div>
+            <!--  -->
+          </div>
         </div>
+        <!--  -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+          <div class="col-12 py-2">
+            <label for="nombrecajero">Nombre de cajero al final del dia</label>
+            <input
+              [class]="campoValido('nombrecajero')"
+              formControlName="nombrecajero"
+              type="text"
+              id="nombrecajero"
+              placeholder="nombrecajero"
+              value="SISTEMA"
+              class="form-control"
+            />
+            <!--  -->
+            <div class="invalid-feedback">
+              <span class="d-block" *ngIf="nombrecajero?.errors?.['required']"
+                >El campo es requerido</span
+              >
+              <span class="d-block" *ngIf="nombrecajero?.errors?.['pattern']"
+                >Ingresem un nombre valido</span
+              >
+            </div>
+            <!--  -->
+          </div>
 
-        <div class="col-12 py-2">
-          <button
-            type="button"
-            class="btn btn-danger my-4"
-            data-bs-toggle="modal"
-            data-bs-target="#modal_realizar_arqueo"
-          >
-            <i class="bi bi-cash-coin"></i> Realizar Conteo
-          </button>
+          <div class="col-12 py-2">
+            <button
+              type="button"
+              class="btn btn-danger my-4"
+              data-bs-toggle="modal"
+              data-bs-target="#modal_realizar_arqueo"
+            >
+              <i class="bi bi-cash-coin"></i> Realizar Conteo
+            </button>
+          </div>
+          <!--  -->
+          <div class="col-12 py-2 contenedor-recuento">
+            <div class="row p-2">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <label for="">Total dolares ($):</label>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span class="text-dark fs-4">0.0</span>
+              </div>
+            </div>
+            <!--  -->
+            <div class="row p-2">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <label for="">Total monedas ($): </label>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span class="text-dark fs-4">0.0</span>
+              </div>
+            </div>
+            <!--  -->
+            <div class="row p-2">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <label for="">Total en caja ($): </label>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span class="text-dark fs-4">0.0</span>
+              </div>
+            </div>
+            <!--  -->
+            <div class="row p-2">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <label for="">Monto fisico</label>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span class="text-dark fs-4">0.0</span>
+              </div>
+            </div>
+            <!--  -->
+            <div class="row p-2">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <label for="">Total Faltante ($): </label>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span class="text-dark fs-4">0.0</span>
+              </div>
+            </div>
+            <!--  -->
+            <div class="row p-2">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <label for="">Total sobrante ($): </label>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span class="text-dark fs-4">0.0</span>
+              </div>
+            </div>
+            <!--  -->
+          </div>
+          <div class="col-12 py-2">
+            <button type="submit" class="btn btn-primary my-4">
+              <i class="bi bi-folder-plus mx-2 fs-5"></i>
+              Registrar arqueo
+            </button>
+          </div>
+          <!--  -->
         </div>
-        <!--  -->
-        <div class="col-12 py-2 contenedor-recuento">
-          <div class="row p-2">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <label for="">Total dolares ($):</label>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <span class="text-dark fs-4">0.0</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="row p-2">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <label for="">Total monedas ($): </label>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <span class="text-dark fs-4">0.0</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="row p-2">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <label for="">Total en caja ($): </label>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <span class="text-dark fs-4">0.0</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="row p-2">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <label for="">Monto fisico</label>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <span class="text-dark fs-4">0.0</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="row p-2">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <label for="">Total Faltante ($): </label>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <span class="text-dark fs-4">0.0</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="row p-2">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <label for="">Total sobrante ($): </label>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-              <span class="text-dark fs-4">0.0</span>
-            </div>
-          </div>
-          <!--  -->
-        </div>
-        <div class="col-12 py-2">
-          <button type="submit" class="btn btn-primary my-4">
-            <i class="bi bi-folder-plus mx-2 fs-5"></i>
-            Registrar arqueo
-          </button>
-        </div>
-        <!--  -->
+        <!-- fin columna 2  -->
       </div>
-      <!-- fin columna 2  -->
     </div>
-  </div>
-</form>
+  </form>
 </div>
 
 <!-- MODAL -->
@@ -213,9 +225,7 @@
     class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
     role="document"
   >
-
     <div class="modal-content">
-
       <div class="modal-header text-center">
         <h5 class="modal-title" id="modalTitleId">Arqueo de caja</h5>
         <button
@@ -225,9 +235,12 @@
           aria-label="Close"
         ></button>
       </div>
-      <form style="overflow-y: auto;">
-      <div class="modal-body">
-
+      <form
+        style="overflow-y: auto"
+        [formGroup]="formulario_conteo"
+        (submit)="(guardarConteo)"
+      >
+        <div class="modal-body">
           <div class="row">
             <!-- DOLARES -->
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -241,10 +254,22 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="dolar_1"
+                    [class]="campoValidoConteo('dolar_1')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span class="d-block" *ngIf="dolar_1?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="dolar_1?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!--  -->
@@ -255,10 +280,22 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="dolar_5"
+                    [class]="campoValidoConteo('dolar_5')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span class="d-block" *ngIf="dolar_5?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="dolar_5?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!--  -->
@@ -269,10 +306,22 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="dolar_10"
+                    [class]="campoValidoConteo('dolar_10')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span class="d-block" *ngIf="dolar_10?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="dolar_10?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!-- CONTENIDO 4 -->
@@ -282,10 +331,22 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="dolar_20"
+                    [class]="campoValidoConteo('dolar_20')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span class="d-block" *ngIf="dolar_20?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="dolar_20?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!-- CONTENIDO 5 -->
@@ -295,10 +356,22 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="dolar_50"
+                    [class]="campoValidoConteo('dolar_50')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span class="d-block" *ngIf="dolar_50?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="dolar_50?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!-- CONTENIDO 6 -->
@@ -308,10 +381,24 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="dolar_100"
+                    [class]="campoValidoConteo('dolar_100')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span
+                      class="d-block"
+                      *ngIf="dolar_100?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="dolar_100?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
             </div>
@@ -327,10 +414,24 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="moneda_01"
+                    [class]="campoValidoConteo('moneda_01')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span
+                      class="d-block"
+                      *ngIf="moneda_01?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="moneda_01?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!--  -->
@@ -341,10 +442,24 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="moneda_05"
+                    [class]="campoValidoConteo('moneda_05')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span
+                      class="d-block"
+                      *ngIf="moneda_05?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="moneda_05?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!--  -->
@@ -355,10 +470,24 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="moneda_10"
+                    [class]="campoValidoConteo('moneda_10')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span
+                      class="d-block"
+                      *ngIf="moneda_10?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="moneda_10?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!-- CONTENIDO 4 -->
@@ -368,10 +497,24 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="moneda_25"
+                    [class]="campoValidoConteo('moneda_25')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span
+                      class="d-block"
+                      *ngIf="moneda_25?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span class="d-block" *ngIf="moneda_25?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!-- CONTENIDO 5 -->
@@ -381,10 +524,26 @@
                 </div>
                 <div class="col-4">
                   <input
+                    formControlName="moneda_100"
+                    [class]="campoValidoConteo('moneda_100')"
                     type="number"
                     class="form-control input"
                     placeholder="0"
                   />
+                  <!--  -->
+                  <div class="invalid-feedback">
+                    <span
+                      class="d-block"
+                      *ngIf="moneda_100?.errors?.['required']"
+                      >El campo es requerido</span
+                    >
+                    <span
+                      class="d-block"
+                      *ngIf="moneda_100?.errors?.['pattern']"
+                      >Valor debe de ser un entero positivo</span
+                    >
+                  </div>
+                  <!--  -->
                 </div>
               </div>
               <!--  -->
@@ -399,48 +558,45 @@
           <!--  -->
           <div class="row py-2">
             <div class="col-3">
-              <label class="form-label mx-2 ">Total dinero($):</label>
+              <label class="form-label mx-2">Total dinero($):</label>
             </div>
             <div class="col-3">
               <span>0,0</span>
             </div>
           </div>
           <!--  -->
-           <div class="row py-2">
+          <div class="row py-2">
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-                  <label class="form-label mx-2 ">Monto fisico(Opcional)</label>
-                  <br>
-                  <input
-                    type="number"
-                    class="form-control input"
-                    placeholder="0"
-                  />
+              <label class="form-label mx-2">Monto fisico(Opcional)</label>
+              <br />
+              <input type="number" class="form-control input" placeholder="0" />
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-               <label class="form-label mx-2 ">Sobrante($)</label>
-                  <br>
-                  <span class="mx-2">0,0</span>
+              <label class="form-label mx-2">Sobrante($)</label>
+              <br />
+              <span class="mx-2">0,0</span>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-               <label class="form-label mx-2 ">Faltante($)</label>
-                  <br>
-                  <span class="mx-2">0,0</span>
+              <label class="form-label mx-2">Faltante($)</label>
+              <br />
+              <span class="mx-2">0,0</span>
             </div>
-           </div>
+          </div>
           <!--  -->
           <!-- FIN DE ROW DETALLE -->
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-        <button type="button" class="btn btn-primary">Terminar Arqueo</button>
-      </div>
-    </form>
-     <!-- FIN DE FORM -->
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button type="submit" class="btn btn-primary">Terminar Arqueo</button>
+        </div>
+      </form>
+      <!-- FIN DE FORM -->
     </div>
-
-
   </div>
 </div>
